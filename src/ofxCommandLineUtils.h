@@ -1,10 +1,11 @@
 #pragma once
 
-bool getBoolAnswer(string question, bool defaultAnswer = true)
+bool getBoolAnswer(std::string question, bool defaultAnswer = true)
 {
-    string defaultAnswerAsString = defaultAnswer ? "y" : "n";
+    std::cin.clear();
+    std::string defaultAnswerAsString = defaultAnswer ? "y" : "n";
     std::cout<<question<<" [y|n] ("<<defaultAnswerAsString<<") ";
-    string answer;
+    std::string answer;
     getline(cin, answer);
     if(answer == "y")
     {
@@ -24,9 +25,11 @@ bool getBoolAnswer(string question, bool defaultAnswer = true)
         return getBoolAnswer(question);
     }
 }
-string getStringAnswer(string question, string defaultAnswer = "")
+
+std::string getStringAnswer(std::string question, std::string defaultAnswer = "")
 {
-    string answer;
+    std::cin.clear();
+    std::string answer;
     std::cout<<question<<" ("<<defaultAnswer<<") ";
     getline(cin, answer);
     if(answer.empty())
@@ -35,9 +38,11 @@ string getStringAnswer(string question, string defaultAnswer = "")
     }
     return answer;
 }
-string getOptionAnswer(string question, std::vector<string> options)
+
+std::string getOptionAnswer(std::string question, std::vector<std::string> options)
 {
-    string answer;
+    std::cin.clear();
+    std::string answer;
     std::cout<<question<<std::endl;
     for(int i = 0; i < options.size(); i++)
     {
@@ -55,4 +60,16 @@ string getOptionAnswer(string question, std::vector<string> options)
         ofLogError("")<<"invalid index";
         return getOptionAnswer(question, options);
     }
+}
+
+int getIntAnswer(std::string question, int defaultAnswer = 0){
+    std::cin.clear();
+    std::string answer;
+    std::cout<<question<<" ("<<defaultAnswer<<") ";
+    getline(cin, answer);
+    if(answer.empty())
+    {
+        return defaultAnswer;
+    }
+    return ofToInt(answer);
 }
