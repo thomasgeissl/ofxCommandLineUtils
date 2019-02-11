@@ -1,10 +1,12 @@
 #pragma once
+#include "./rang/include/rang.hpp"
 
 bool getBoolAnswer(std::string question, bool defaultAnswer = true)
 {
     std::cin.clear();
     std::string defaultAnswerAsString = defaultAnswer ? "y" : "n";
-    std::cout<<question<<" [y|n] ("<<defaultAnswerAsString<<") ";
+    std::cout << rang::style::bold << question<< rang::style::reset;
+    std::cout << " [y|n] ("<< rang::style::bold << rang::fg::green << defaultAnswerAsString << rang::style::reset << rang::fg::reset << ") ";
     std::string answer;
     getline(cin, answer);
     if(answer == "y")
@@ -30,7 +32,8 @@ std::string getStringAnswer(std::string question, std::string defaultAnswer = ""
 {
     std::cin.clear();
     std::string answer;
-    std::cout<<question<<" ("<<defaultAnswer<<") ";
+    std::cout << rang::style::bold << question<< rang::style::reset;
+    std::cout << " ("<< rang::style::bold << rang::fg::green << defaultAnswer << rang::style::reset << rang::fg::reset << ") ";
     getline(cin, answer);
     if(answer.empty())
     {
@@ -43,7 +46,7 @@ std::string getOptionAnswer(std::string question, std::vector<std::string> optio
 {
     std::cin.clear();
     std::string answer;
-    std::cout<<question<<std::endl;
+    std::cout << rang::style::bold << question<< rang::style::reset << endl;
     for(int i = 0; i < options.size(); i++)
     {
         std::cout<<"("<<i<<") "<<options[i]<<std::endl;
@@ -65,7 +68,10 @@ std::string getOptionAnswer(std::string question, std::vector<std::string> optio
 int getIntAnswer(std::string question, int defaultAnswer = 0){
     std::cin.clear();
     std::string answer;
-    std::cout<<question<<" ("<<defaultAnswer<<") ";
+
+    std::cout << rang::style::bold << question<< rang::style::reset;
+    std::cout << " ("<< rang::style::bold << rang::fg::green << defaultAnswer << rang::style::reset << rang::fg::reset << ") ";
+
     getline(cin, answer);
     if(answer.empty())
     {
