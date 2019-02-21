@@ -1,5 +1,6 @@
 #pragma once
 #include "./rang/include/rang.hpp"
+#include "./cxxopts.hpp"
 
 bool getBoolAnswer(std::string question, bool defaultAnswer = true)
 {
