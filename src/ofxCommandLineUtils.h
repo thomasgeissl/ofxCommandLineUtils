@@ -1,4 +1,5 @@
 #pragma once
+#include "ofUtils.h"
 #include "./rang.hpp"
 #include "./cxxopts.hpp"
 
@@ -12,7 +13,7 @@ public:
         std::cout << rang::style::bold << question << rang::style::reset;
         std::cout << " [y|n] (" << rang::style::bold << rang::fg::green << defaultAnswerAsString << rang::style::reset << rang::fg::reset << ") ";
         std::string answer;
-        getline(cin, answer);
+        getline(std::cin, answer);
         if (answer == "y")
         {
             return true;
@@ -38,7 +39,7 @@ public:
         std::string answer;
         std::cout << rang::style::bold << question << rang::style::reset;
         std::cout << " (" << rang::style::bold << rang::fg::green << defaultAnswer << rang::style::reset << rang::fg::reset << ") ";
-        getline(cin, answer);
+        getline(std::cin, answer);
         if (answer.empty())
         {
             return defaultAnswer;
@@ -50,13 +51,13 @@ public:
     {
         std::cin.clear();
         std::string answer;
-        std::cout << rang::style::bold << question << rang::style::reset << endl;
+        std::cout << rang::style::bold << question << rang::style::reset << std::endl;
         for (int i = 0; i < options.size(); i++)
         {
             std::cout << "(" << i << ") " << options[i] << std::endl;
         }
         std::cout << std::endl;
-        getline(cin, answer);
+        getline(std::cin, answer);
         int optionIndex = ofToInt(answer);
         if (optionIndex < options.size())
         {
@@ -76,11 +77,26 @@ public:
         std::cout << rang::style::bold << question << rang::style::reset;
         std::cout << " (" << rang::style::bold << rang::fg::green << defaultAnswer << rang::style::reset << rang::fg::reset << ") ";
 
-        getline(cin, answer);
+        getline(std::cin, answer);
         if (answer.empty())
         {
             return defaultAnswer;
         }
         return ofToInt(answer);
     }
-}
+    static int getFloatAnswer(std::string question, float defaultAnswer = 0)
+    {
+        std::cin.clear();
+        std::string answer;
+
+        std::cout << rang::style::bold << question << rang::style::reset;
+        std::cout << " (" << rang::style::bold << rang::fg::green << defaultAnswer << rang::style::reset << rang::fg::reset << ") ";
+
+        getline(std::cin, answer);
+        if (answer.empty())
+        {
+            return defaultAnswer;
+        }
+        return ofToFloat(answer);
+    }
+};
