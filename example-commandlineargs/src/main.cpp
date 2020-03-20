@@ -1,6 +1,8 @@
 #include "ofLog.h"
 #include "ofxCommandLineUtils.h"
 
+// ./bin/example-commandlineargs.app/Contents/MacOS/example-commandlineargs -v -d -p 8000 -h localhost
+
 int main(int argc, char *argv[])
 {
     cxxopts::Options options("example-commandlineargs", "example application to demonstrate how ot use cxxopts");
