@@ -32,6 +32,8 @@ int main(int argc, char *argv[])
 
     auto pi = clu.getFloatAnswer("And what is the exact value of pi?");
     ofLogNotice() << "Not too bad, you are only " << std::abs(glm::pi<float>() - pi) << " away.";
+
+    clu.printNewLines(3);
     ofLogNotice() << "Good bye, talk you soon.";
     return 0;
 }

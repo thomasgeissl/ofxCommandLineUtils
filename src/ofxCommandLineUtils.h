@@ -99,4 +99,11 @@ public:
         }
         return ofToFloat(answer);
     }
+    static void printNewLines(int count = 1)
+    {
+        for (auto i = 0; i < count; i++)
+        {
+            std::cout << std::endl;
+        }
+    }
 };
