@@ -1,12 +1,15 @@
 #!/bin/sh
+OFVERSION=0.11.0
+GHUSER=thomasgeissl
+GHREPO=ofxCommandLineUtils
 
-curl -O https://openframeworks.cc/versions/v0.10.1/of_v0.10.1_osx_release.zip
-unzip -a -qq of_v0.10.1_osx_release.zip
-rm of_v0.10.1_osx_release.zip
-cd of_v0.10.1_osx_release/addons
+curl -O https://openframeworks.cc/versions/v${OFVERSION}/of_v${OFVERSION}_osx_release.zip
+unzip -a -qq of_v${OFVERSION}_osx_release.zip
+rm of_v${OFVERSION}_osx_release.zip
+cd of_v${OFVERSION}_osx_release/addons
 
-git clone https://github.com/thomasgeissl/ofxCommandLineUtils.git
-cd ofxCommandLineUtils
+git clone https://github.com/${GHUSER}/${GHREPO}.git
+cd $GHREPO
 
 for d in example*/ ; do
     echo "$d"
