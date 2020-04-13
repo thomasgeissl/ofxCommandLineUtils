@@ -1,3 +1,5 @@
+#include <chrono>
+#include <thread>
 #include "ofLog.h"
 #include "ofMath.h"
 #include "ofxCommandLineUtils.h"
@@ -35,5 +37,18 @@ int main(int argc, char *argv[])
 
     clu.printNewLines(3);
     ofLogNotice() << "Good bye, talk you soon.";
+    clu.printNewLines(2);
+
+    // progress bar
+    auto size = 0;
+    for (auto i = 0; i <= 50; i++)
+    {
+        std::string text = "[" + ofToString(i * 2, 0, 2, '0') + "]" + std::string(i, '-');
+        size = clu.print(text);
+        std::this_thread::sleep_for(std::chrono::milliseconds(100));
+        clu.del(size);
+        std::this_thread::sleep_for(std::chrono::milliseconds(100));
+    }
+    clu.printNewLines();
     return 0;
 }

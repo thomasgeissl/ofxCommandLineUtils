@@ -106,4 +106,14 @@ public:
             std::cout << std::endl;
         }
     }
+
+    static int print(std::string text)
+    {
+        std::cout << text << std::flush;
+        return text.size();
+    }
+    static void del(int size)
+    {
+        std::cout << std::string(size, '\b');
+    }
 };
